@@ -14,5 +14,6 @@ Include [library](https://crates.io/crates/microchip-eeprom-25x) as a dependency
 version = "<version>"
 ```
 
-Use embedded-hal implementation to get SPI and a GPIO OutputPin for the chip select.
+Use embedded-hal implementation to get SPI and a GPIO OutputPin for the hold line, write protect line and chip select.
+
 
