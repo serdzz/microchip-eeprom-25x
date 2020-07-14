@@ -157,20 +157,6 @@ where
         self.transfer(&mut buf)
     }
 
-    /// Get a u32 command integer from a 24 bit address
-    pub fn read_from_address_command(address: u32) -> u32 {
-        let mut ret = address;
-        ret.set_bits(24..31, Instruction::Read as u32);
-        ret
-    }
-
-    /// Get a u32 command integer from a 24 bit address
-    pub fn write_from_address_command(address: u32) -> u32 {
-        let mut ret = address;
-        ret.set_bits(24..31, Instruction::Write as u32);
-        ret
-    }
-
     /// Transfer over the SPI
     pub fn transfer(&mut self, bytes: &mut [u8]) -> Result<(), Error<SpiError, PinError>> {
         self.cs.set_low().map_err(Error::PinError)?;
@@ -178,4 +164,18 @@ where
         self.cs.set_high().map_err(Error::PinError)?;
         Ok(())
     }
+}
+
+/// Get a u32 command integer from a 24 bit address
+pub fn e25x_read_from_address_command(address: u32) -> u32 {
+    let mut ret = address;
+    ret.set_bits(24..31, Instruction::Read as u32);
+    ret
+}
+
+/// Get a u32 command integer from a 24 bit address
+pub fn e25x_write_from_address_command(address: u32) -> u32 {
+    let mut ret = address;
+    ret.set_bits(24..31, Instruction::Write as u32);
+    ret
 }
