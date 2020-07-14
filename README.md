@@ -29,6 +29,27 @@ Include [library](https://crates.io/crates/microchip-eeprom-25x) as a dependency
 version = "<version>"
 ```
 
+```rust
+
+        let e25x = microchip_eeprom_25x::Eeprom25x::new(spi, cs, wp ,hold);
+        // 24 bit address
+        let address = 0x55aa00u32;
+        let write_reg = microchip_eeprom_25x::e25x_write_from_address_command(address);
+        let write_reg: [u8; 4] = write_reg.to_be_bytes();
+        let mut buffer = [write_reg[0], write_reg[1], write_reg[2], write_reg[3], 0xFF, 0x10, 0xAA];
+        // Set up write latch
+        e25x.write_enable();
+        let result = e25x.transfer(&mut buffer);
+        let read_reg = microchip_eeprom_25x::e25x_read_from_address_command(0x55aa00u32);
+        let read_reg: [u8; 4] = read_reg.to_be_bytes();
+        let mut read_buffer = [read_reg[0], read_reg[1], read_reg[2], read_reg[3], 0, 0, 0];
+        e25x.transfer(&mut buffer)?;
+        assert_eq!(read_buffer[4], 0xFF);
+        assert_eq!(read_buffer[5], 0x10);
+        assert_eq!(read_buffer[6], 0xAA);
+
+```
+
 Use embedded-hal implementation to get SPI and a GPIO OutputPin for the hold line, write protect line and chip select.
 
 
