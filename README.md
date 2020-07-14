@@ -1,7 +1,7 @@
-# Microchip 25LCx embedded-hal SPI driver crate
+# Microchip 25LCxx embedded-hal SPI driver crate
 
-![](https://img.shields.io/crates/v/microchip-eeprom-25x.svg)
-![](https://docs.rs/microchip-eeprom-25x/badge.svg)
+![](https://img.shields.io/crates/v/microchip-eeprom-25lcxx.svg)
+![](https://docs.rs/microchip-eeprom-25lcxx/badge.svg)
 
 Rust HAL implementation (using SPI drivers) for Microchip's 25 series EEPROM chips.
 
@@ -22,26 +22,26 @@ Supported models:
 
 ## Usage
 
-Include [library](https://crates.io/crates/microchip-eeprom-25x) as a dependency in your Cargo.toml
+Include [library](https://crates.io/crates/microchip-eeprom-25lcxx) as a dependency in your Cargo.toml
 
 ```
-[dependencies.microchip-eeprom-25x]
+[dependencies.microchip-eeprom-25lcxx]
 version = "<version>"
 ```
 
 ```rust
 
-        let mut e25x = microchip_eeprom_25x::Eeprom25x::new(spi, cs, wp ,hold)?;
+        let mut e25x = microchip_eeprom_25lcxx::Eeprom25x::new(spi, cs, wp ,hold)?;
         e25x.release_from_deep_sleep_and_get_manufacturer_id();
         // 24 bit address
         let address = 0x55aa00u32;
-        let write_reg = microchip_eeprom_25x::e25x_write_from_address_command(address);
+        let write_reg = microchip_eeprom_25lcxx::e25x_write_from_address_command(address);
         let write_reg: [u8; 4] = write_reg.to_be_bytes();
         let mut buffer = [write_reg[0], write_reg[1], write_reg[2], write_reg[3], 0xFF, 0x10, 0xAA];
         // Set up write latch
         e25x.write_enable();
         let result = e25x.transfer(&mut buffer);
-        let read_reg = microchip_eeprom_25x::e25x_read_from_address_command(0x55aa00u32);
+        let read_reg = microchip_eeprom_25lcxx::e25x_read_from_address_command(0x55aa00u32);
         let read_reg: [u8; 4] = read_reg.to_be_bytes();
         let mut read_buffer = [read_reg[0], read_reg[1], read_reg[2], read_reg[3], 0, 0, 0];
         e25x.transfer(&mut buffer)?;
