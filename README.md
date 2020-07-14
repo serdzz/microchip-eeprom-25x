@@ -31,7 +31,8 @@ version = "<version>"
 
 ```rust
 
-        let e25x = microchip_eeprom_25x::Eeprom25x::new(spi, cs, wp ,hold);
+        let mut e25x = microchip_eeprom_25x::Eeprom25x::new(spi, cs, wp ,hold)?;
+        e25x.release_from_deep_sleep_and_get_manufacturer_id();
         // 24 bit address
         let address = 0x55aa00u32;
         let write_reg = microchip_eeprom_25x::e25x_write_from_address_command(address);
