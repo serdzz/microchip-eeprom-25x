@@ -1,5 +1,6 @@
 [package]
 name = "microchip-eeprom-25x"
+description = "A platform agnostic driver to interface with the Microchip 25xxxx EEPROM through SPI"
 authors = ["Michael van Niekerk <mvniekerk@chazaqdev.com>"]
 edition = "2018"
 keywords = ["embedded-hal-driver", "eeprom", "MEMS", "microchip"]
