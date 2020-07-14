@@ -1,4 +1,4 @@
-# Microchip 25x embedded-hal SPI driver crate
+# Microchip 25LCx embedded-hal SPI driver crate
 
 ![](https://img.shields.io/crates/v/microchip-eeprom-25x.svg)
 ![](https://docs.rs/microchip-eeprom-25x/badge.svg)
