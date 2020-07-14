@@ -1,7 +1,7 @@
 # Microchip 25x embedded-hal SPI driver crate
 
-![](https://img.shields.io/crates/v/adxl313.svg)
-![](https://docs.rs/adxl313/badge.svg)
+![](https://img.shields.io/crates/v/microchip-eeprom-25x.svg)
+![](https://docs.rs/microchip-eeprom-25x/badge.svg)
 
 Rust HAL implementation (using SPI drivers) for Microchip's 25 series EEPROM chips.
 
