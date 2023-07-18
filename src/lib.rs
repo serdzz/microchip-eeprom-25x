@@ -45,8 +45,7 @@ where
             spi, cs, wp, hold
         };
         ret.cs.set_high().map_err(Error::PinError)?;
-        #[cfg(feature = "hold_line")]
-        ret.hold.set_low().map_err(Error::PinError)?;
+        ret.hold.set_high().map_err(Error::PinError)?;
         ret.wp.set_high().map_err(Error::PinError)?;
 
         let id = ret.release_from_deep_sleep_and_get_manufacturer_id()?;
