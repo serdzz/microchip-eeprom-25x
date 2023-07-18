@@ -117,7 +117,7 @@ where
         // <Instruction byte><Dummy address 3 bytes><Manufacturer ID byte>
         let mut buf = [Instruction::ReleasePowerDown as u8, 0, 0, 0, 0];
         self.transfer(&mut buf)?;
-        Ok(buf[3])
+        Ok(buf[4])
     }
 
     /// Put the device in deep sleep mode
