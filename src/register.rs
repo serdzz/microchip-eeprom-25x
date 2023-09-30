@@ -7,10 +7,10 @@ pub enum Instruction {
     Write = 0b0000_0010,
     WriteEnable = 0b0000_0110,
     WriteDisable = 0b0000_0100,
-    ReadStatus = 0b0000_01010,
-    WriteStatus = 0b0000_01000,
+    ReadStatus = 0b0000_0101,
+    WriteStatus = 0b0000_0001,
     PageErase = 0b0100_0010,
-    SectorErase = 0b1101_1000,
+    SectorErase = 0b1100_1000,
     ChipErase = 0b1100_0111,
     ReleasePowerDown = 0b1010_1011,
     DeepSleepPowerMode = 0b1011_1001
